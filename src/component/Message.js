@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 
 class Message extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: props.message };
+  }
   render() {
+    console.log(this.state.message);
     return (
-      <div className="row message unread">
+      <div
+        className={
+          this.state.message.read ? "row message read" : "row message unread"
+        }
+      >
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
@@ -15,7 +24,7 @@ class Message extends Component {
           </div>
         </div>
         <div className="col-xs-11">
-          <a href="#">Here is some message text that has a bunch of stuff</a>
+          <a href="#">{this.state.message.subject}</a>
         </div>
       </div>
     );

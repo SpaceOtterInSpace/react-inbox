@@ -10,9 +10,9 @@ class MessageList extends Component {
   render() {
     return (
       <div className="message">
-        Message List
-        <Message />
-        <div>button</div>
+        {this.state.messages.map(message => (
+          <Message key={message.id} message={message} />
+        ))}
       </div>
     );
   }
