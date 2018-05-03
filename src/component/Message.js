@@ -18,7 +18,7 @@ class Message extends Component {
               <input type="checkbox" checked={this.state.message.selected}/>
             </div>
             <div className="col-xs-2">
-              <i className="star fa fa-star-o" />
+              <i className={this.state.message.starred ? "star fa fa-star" : "star fa fa-star-o"} />
             </div>
           </div>
         </div>
