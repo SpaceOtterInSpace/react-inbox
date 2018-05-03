@@ -15,7 +15,7 @@ class Message extends Component {
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" />
+              <input type="checkbox" checked={this.state.message.selected}/>
             </div>
             <div className="col-xs-2">
               <i className="star fa fa-star-o" />
