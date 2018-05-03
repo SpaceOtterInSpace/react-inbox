@@ -6,7 +6,6 @@ class Message extends Component {
     this.state = { message: props.message };
   }
   render() {
-    console.log(this.state.message);
     return (
       <div
         className={
