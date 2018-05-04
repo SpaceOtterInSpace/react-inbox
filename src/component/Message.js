@@ -23,6 +23,9 @@ class Message extends Component {
           </div>
         </div>
         <div className="col-xs-11">
+          {this.state.message.labels.map(label => (
+            <span class="label label-warning">{label}</span>
+          ))}
           <a href="#">{this.state.message.subject}</a>
         </div>
       </div>
