@@ -18,15 +18,30 @@ class Message extends Component {
     }));
   };
 
+  handleCheckboxClick = () => {
+    this.setState(prevState => ({
+      selected: !prevState.selected
+    }));
+  };
+
+  getClass = () => {
+    var class_name = "row message";
+    class_name += this.state.read ? " read" : " unread";
+    class_name += this.state.selected ? " selected" : "";
+    return class_name;
+  };
+
   render() {
     return (
-      <div
-        className={this.state.read ? "row message read" : "row message unread"}
-      >
+      <div className={this.getClass()}>
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" checked={this.state.selected} />
+              <input
+                onClick={this.handleCheckboxClick}
+                type="checkbox"
+                checked={this.state.selected}
+              />
             </div>
             <div className="col-xs-2">
               <i
