@@ -15,10 +15,16 @@ class Message extends Component {
         <div className="col-xs-1">
           <div className="row">
             <div className="col-xs-2">
-              <input type="checkbox" checked={this.state.message.selected}/>
+              <input type="checkbox" checked={this.state.message.selected} />
             </div>
             <div className="col-xs-2">
-              <i className={this.state.message.starred ? "star fa fa-star" : "star fa fa-star-o"} />
+              <i
+                className={
+                  this.state.message.starred
+                    ? "star fa fa-star"
+                    : "star fa fa-star-o"
+                }
+              />
             </div>
           </div>
         </div>
