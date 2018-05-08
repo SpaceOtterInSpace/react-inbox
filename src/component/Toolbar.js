@@ -10,6 +10,11 @@ class Toolbar extends Component {
     this.props.addLabel(label);
   };
 
+  handleRemoveLabel = e => {
+    let label = e.target.value;
+    this.props.removeLabel(label);
+  };
+
   render() {
     return (
       <div className="row toolbar">
@@ -50,7 +55,10 @@ class Toolbar extends Component {
             <option value="gschool">gschool</option>
           </select>
 
-          <select className="form-control label-select">
+          <select
+            onChange={this.handleRemoveLabel.bind(this)}
+            className="form-control label-select"
+          >
             <option>Remove label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>

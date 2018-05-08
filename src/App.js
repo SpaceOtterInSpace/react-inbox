@@ -94,6 +94,18 @@ class App extends Component {
     this.setState({ messages });
   };
 
+  removeLabel = labelRemoved => {
+    let messages = this.state.messages.map(message => {
+      if (message.selected && message.labels.indexOf(labelRemoved) !== -1) {
+        message.labels = message.labels.filter(function(label) {
+          return label !== labelRemoved;
+        });
+      }
+      return message;
+    });
+    this.setState({ messages });
+  };
+
   deleteMessage = () => {
     let messages = this.state.messages;
     messages = messages.filter(message => !message.selected);
@@ -140,6 +152,7 @@ class App extends Component {
           markAsUnread={this.markAsUnread}
           deleteMessage={this.deleteMessage}
           addLabel={this.addLabel}
+          removeLabel={this.removeLabel}
         />
         <MessageList
           messages={this.state.messages}
