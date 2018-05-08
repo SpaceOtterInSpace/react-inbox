@@ -15,6 +15,16 @@ class Toolbar extends Component {
     this.props.removeLabel(label);
   };
 
+  getAllSelectedClass = () => {
+    if (this.props.selectedStatus() === "all") {
+      return "fa fa-check-square";
+    } else if (this.props.selectedStatus() === "none") {
+      return "fa fa-check-square-o";
+    } else {
+      return "fa fa-minus-square-o";
+    }
+  };
+
   render() {
     return (
       <div className="row toolbar">
@@ -28,13 +38,7 @@ class Toolbar extends Component {
             onClick={this.handleAllSelected.bind(this)}
             className="btn btn-default"
           >
-            <i
-              className={
-                this.props.allSelected
-                  ? "fa fa-check-square-o"
-                  : "fa fa-check-square"
-              }
-            />
+            <i className={this.getAllSelectedClass()} />
           </button>
 
           <button onClick={this.props.markAsRead} className="btn btn-default">

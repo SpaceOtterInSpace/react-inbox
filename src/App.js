@@ -153,6 +153,23 @@ class App extends Component {
     return result;
   };
 
+  allButtonState = () => {
+    let selected = this.state.messages.reduce(function(
+      previousValue,
+      currentObject
+    ) {
+      return previousValue + (currentObject.selected ? 1 : 0);
+    },
+    0);
+    if (selected === this.state.messages.length) {
+      return "all";
+    } else if (selected === 0) {
+      return "none";
+    } else {
+      return "some";
+    }
+  };
+
   render() {
     return (
       <div className="App">
@@ -165,6 +182,7 @@ class App extends Component {
           addLabel={this.addLabel}
           removeLabel={this.removeLabel}
           getNumberRead={this.getNumberRead}
+          selectedStatus={this.allButtonState}
         />
         <MessageList
           messages={this.state.messages}
