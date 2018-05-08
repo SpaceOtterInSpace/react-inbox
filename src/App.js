@@ -87,7 +87,7 @@ class App extends Component {
   deleteMessage = () => {
     let messages = this.state.messages;
     messages = messages.filter(message => !message.selected);
-    this.setState({ messages });
+    this.setState({ messages, allSelected: false });
   };
 
   selectAll = allSelected => {
