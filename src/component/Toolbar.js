@@ -27,9 +27,13 @@ class Toolbar extends Component {
             />
           </button>
 
-          <button className="btn btn-default">Mark As Read</button>
+          <button onClick={this.props.markAsRead} className="btn btn-default">
+            Mark As Read
+          </button>
 
-          <button className="btn btn-default">Mark As Unread</button>
+          <button onClick={this.props.markAsUnread} className="btn btn-default">
+            Mark As Unread
+          </button>
 
           <select className="form-control label-select">
             <option>Apply label</option>

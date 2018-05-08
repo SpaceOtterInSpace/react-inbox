@@ -94,12 +94,34 @@ class App extends Component {
     this.setState({ messages, allSelected });
   };
 
+  markAsRead = () => {
+    var messages = this.state.messages.map(message => {
+      if (message.selected) {
+        message.read = true;
+      }
+      return message;
+    });
+    this.setState({ messages });
+  };
+
+  markAsUnread = () => {
+    var messages = this.state.messages.map(message => {
+      if (message.selected) {
+        message.read = false;
+      }
+      return message;
+    });
+    this.setState({ messages });
+  };
+
   render() {
     return (
       <div className="App">
         <Toolbar
           selectAll={this.selectAll}
           allSelected={this.state.allSelected}
+          markAsRead={this.markAsRead}
+          markAsUnread={this.markAsUnread}
         />
         <MessageList
           messages={this.state.messages}
