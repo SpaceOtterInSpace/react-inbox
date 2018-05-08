@@ -41,17 +41,26 @@ class Toolbar extends Component {
             <i className={this.getAllSelectedClass()} />
           </button>
 
-          <button onClick={this.props.markAsRead} className="btn btn-default">
+          <button
+            onClick={this.props.markAsRead}
+            className="btn btn-default"
+            disabled={this.props.selectedStatus() === "none"}
+          >
             Mark As Read
           </button>
 
-          <button onClick={this.props.markAsUnread} className="btn btn-default">
+          <button
+            onClick={this.props.markAsUnread}
+            className="btn btn-default"
+            disabled={this.props.selectedStatus() === "none"}
+          >
             Mark As Unread
           </button>
 
           <select
             onChange={this.handleApplyLabel.bind(this)}
             className="form-control label-select"
+            disabled={this.props.selectedStatus() === "none"}
           >
             <option>Apply label</option>
             <option value="dev">dev</option>
@@ -62,6 +71,7 @@ class Toolbar extends Component {
           <select
             onChange={this.handleRemoveLabel.bind(this)}
             className="form-control label-select"
+            disabled={this.props.selectedStatus() === "none"}
           >
             <option>Remove label</option>
             <option value="dev">dev</option>
@@ -72,8 +82,12 @@ class Toolbar extends Component {
           <button
             onClick={this.props.deleteMessage}
             className="btn btn-default"
+            disabled={this.props.selectedStatus() === "none"}
           >
-            <i className="fa fa-trash-o" />
+            <i
+              className="fa fa-trash-o"
+              disabled={this.props.selectedStatus() === "none"}
+            />
           </button>
         </div>
       </div>
