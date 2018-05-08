@@ -84,6 +84,12 @@ class App extends Component {
     this.setState({ messages });
   };
 
+  deleteMessage = () => {
+    let messages = this.state.messages;
+    messages = messages.filter(message => !message.selected);
+    this.setState({ messages });
+  };
+
   selectAll = allSelected => {
     var messages = this.state.messages.map(message => {
       return {
@@ -122,6 +128,7 @@ class App extends Component {
           allSelected={this.state.allSelected}
           markAsRead={this.markAsRead}
           markAsUnread={this.markAsUnread}
+          deleteMessage={this.deleteMessage}
         />
         <MessageList
           messages={this.state.messages}
