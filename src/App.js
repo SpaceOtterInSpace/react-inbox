@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Toolbar from "./component/Toolbar.js";
 import MessageList from "./component/MessageList.js";
@@ -76,11 +75,32 @@ class App extends Component {
     };
   }
 
+  updateMessage = newMessage => {
+    let messages = this.state.messages;
+    messages.map(message => {
+      return message.id === newMessage.id ? newMessage : message;
+    });
+    this.setState({ messages });
+  };
+
+  selectAll = () => {
+    var messages = this.state.messages.map(message => {
+      return {
+        ...message,
+        selected: true
+      };
+    });
+    this.setState({ messages: messages });
+  };
+
   render() {
     return (
       <div className="App">
-        <Toolbar />
-        <MessageList messages={this.state.messages} />
+        <Toolbar selectAll={this.selectAll} />
+        <MessageList
+          messages={this.state.messages}
+          updateMessage={this.updateMessage}
+        />
       </div>
     );
   }

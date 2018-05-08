@@ -10,7 +10,7 @@ class Toolbar extends Component {
             unread messages
           </p>
 
-          <button className="btn btn-default">
+          <button onClick={this.props.selectAll} className="btn btn-default">
             <i className="fa fa-check-square-o" />
           </button>
 
