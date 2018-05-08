@@ -142,6 +142,17 @@ class App extends Component {
     this.setState({ messages });
   };
 
+  getNumberRead = () => {
+    var result = this.state.messages.reduce(function(
+      previousValue,
+      currentObject
+    ) {
+      return previousValue + (currentObject.read ? 0 : 1);
+    },
+    0);
+    return result;
+  };
+
   render() {
     return (
       <div className="App">
@@ -153,6 +164,7 @@ class App extends Component {
           deleteMessage={this.deleteMessage}
           addLabel={this.addLabel}
           removeLabel={this.removeLabel}
+          getNumberRead={this.getNumberRead}
         />
         <MessageList
           messages={this.state.messages}
