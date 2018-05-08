@@ -5,6 +5,11 @@ class Toolbar extends Component {
     this.props.selectAll(!this.props.allSelected);
   };
 
+  handleApplyLabel = e => {
+    let label = e.target.value;
+    this.props.addLabel(label);
+  };
+
   render() {
     return (
       <div className="row toolbar">
@@ -35,7 +40,10 @@ class Toolbar extends Component {
             Mark As Unread
           </button>
 
-          <select className="form-control label-select">
+          <select
+            onChange={this.handleApplyLabel.bind(this)}
+            className="form-control label-select"
+          >
             <option>Apply label</option>
             <option value="dev">dev</option>
             <option value="personal">personal</option>
