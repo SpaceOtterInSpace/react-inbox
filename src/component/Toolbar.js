@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class Toolbar extends Component {
+  handleAllSelected = e => {
+    this.props.selectAll(!this.props.allSelected);
+  };
+
   render() {
     return (
       <div className="row toolbar">
@@ -10,8 +14,17 @@ class Toolbar extends Component {
             unread messages
           </p>
 
-          <button onClick={this.props.selectAll} className="btn btn-default">
-            <i className="fa fa-check-square-o" />
+          <button
+            onClick={this.handleAllSelected.bind(this)}
+            className="btn btn-default"
+          >
+            <i
+              className={
+                this.props.allSelected
+                  ? "fa fa-check-square-o"
+                  : "fa fa-check-square"
+              }
+            />
           </button>
 
           <button className="btn btn-default">Mark As Read</button>

@@ -7,6 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      allSelected: false,
       messages: [
         {
           id: 1,
@@ -83,20 +84,23 @@ class App extends Component {
     this.setState({ messages });
   };
 
-  selectAll = () => {
+  selectAll = allSelected => {
     var messages = this.state.messages.map(message => {
       return {
         ...message,
-        selected: true
+        selected: allSelected
       };
     });
-    this.setState({ messages: messages });
+    this.setState({ messages, allSelected });
   };
 
   render() {
     return (
       <div className="App">
-        <Toolbar selectAll={this.selectAll} />
+        <Toolbar
+          selectAll={this.selectAll}
+          allSelected={this.state.allSelected}
+        />
         <MessageList
           messages={this.state.messages}
           updateMessage={this.updateMessage}
